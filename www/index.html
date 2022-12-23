@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>House Power</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <style>
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #80c080;
+  height: 100%;
+}
+
+table {
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td {
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+}
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td id="power"></td>
+        <td id="uom"></td>
+      </tr>
+    </table>
+    <script>
+const power = document.getElementById('power');
+const uom = document.getElementById('uom');
+
+const socket = new WebSocket('ws://192.168.1.39:8080');
+
+power.innerHTML = 'Hello!';
+
+socket.onerror = function(event){
+  power.innerHTML = "Refresh!";
+  uom.innerHTML = ""
+  console.log("Error!");
+}
+
+socket.onmessage = function(event) {
+  const value = JSON.parse(event.data).power;
+  power.innerHTML = value
+  uom.innerHTML = "W"
+  console.log(event.data);
+};
+
+socket.send('Hello!');
+    </script>
+  </body>
+</html>
