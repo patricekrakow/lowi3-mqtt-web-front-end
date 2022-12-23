@@ -71,6 +71,14 @@ sudo npm install -g npm@9.2.0
 ```
 
 ```text
+which http-server
+```
+
+```text
+sudo ln -s /usr/local/lib/nodejs/node-v18.12.1-linux-armv7l/bin/http-server /usr/bin/http-server
+```
+
+```text
 http-server /home/pi/lowi3/www --port 8082
 ```
 
@@ -84,14 +92,6 @@ which pm2
 
 ```text
 sudo ln -s /usr/local/lib/nodejs/node-v18.12.1-linux-armv7l/bin/pm2 /usr/bin/pm2
-```
-
-```text
-which http-server
-```
-
-```text
-sudo ln -s /usr/local/lib/nodejs/node-v18.12.1-linux-armv7l/bin/http-server /usr/bin/http-server
 ```
 
 ```text
@@ -115,9 +115,17 @@ npm install
 ```
 
 ```text
+node app.js
+```
+
+```text
 pm2 start /home/pi/lowi3/server/app.js --name lowi3-server
 ```
 
 ```text
 pm2 save
+```
+
+```text
+pm2 startup -u pi
 ```
