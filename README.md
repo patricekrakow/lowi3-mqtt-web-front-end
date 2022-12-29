@@ -129,3 +129,21 @@ pm2 save
 ```text
 pm2 startup -u pi
 ```
+
+## Deploy
+
+```text
+scp ~/work/lowi3-mqtt-web-front-end/www/index.html pi@raspberrypi:/home/pi/lowi3/www
+```
+
+```text
+scp ~/work/lowi3-mqtt-web-front-end/server/app.js pi@raspberrypi:/home/pi/lowi3/server
+```
+
+```text
+ssh pi@raspberrypi
+```
+
+```text
+pm2 restart lowi3-server
+```

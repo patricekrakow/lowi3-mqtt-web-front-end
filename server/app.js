@@ -1,7 +1,7 @@
 // lowi3-mqtt-web-front-end/server/app.js
 const WebSocket = require('ws');
 const uuid = require('uuid');
-const mqtt = require('mqtt')
+const mqtt = require('mqtt');
 
 const wss = new WebSocket.Server({ port: 8080 });
 
@@ -13,14 +13,15 @@ client.on('connect', function () {
   client.subscribe('3494546c727e/PUB/CH0', function (err) {
     if (!err) {
       client.publish('3494546c727e/PUB/CH0', 'Connected with MQTT.')
+      console.log('[INFO] Connected with MQTT.');
     }
   })
-})
+});
 
 wss.on('connection', function connection(ws) {
   ws.id = uuid.v4();
   ws.on('message', function incoming(messageWS) {
-    console.log('[INFO] Received form WS: %s', messageWS);
+    console.log(`[INFO] Received form WS: ${messageWS}`);
   });
 
   client.on('message', function (topic, payloadMQTT) {
