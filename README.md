@@ -147,3 +147,9 @@ ssh pi@raspberrypi
 ```text
 pm2 restart lowi3-server
 ```
+
+### Get CSV files from the Raspberry Pi
+
+```text
+scp pi@raspberrypi:/home/pi/lowi3/server/*.csv .
+```
